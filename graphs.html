@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.js"></script>
+	<style>
+	#container {
+	min-width: 310px;
+	max-width: 600px;
+	height: 400px;
+	margin: 0;
+}
+
+	#container3 {
+	min-width: 310px;
+	max-width: 600px;
+	height: 400px;
+	margin: 50px;
+}
+
+#container1, #sliders {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+#container1 {
+    height: 400px; 
+}
+   
+ #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+
+</style>
+</head>
+<body>
+Hello
+
+<p>Click the button to display the date.</p>
+
+<button onclick="displayDate()">The time is?</button>
+
+<script>
+function displayDate() {
+	alert('inside function display date');
+    document.getElementById("demo").innerHTML = Date();
+}
+</script>
+<script type="text/javascript">
+
+
+function initAutocomplete() {
+
+               
+                 var uluru = {lat: -37.7963, lng: 144.9614};
+                  // The map, centered at Uluru
+                  var map = new google.maps.Map(
+                      document.getElementById('map'), {zoom: 13, center: uluru});
+                  // The marker, positioned at Uluru
+                 var marker = new google.maps.Marker({position: uluru, map: map});
+            var beaches = [
+              ['North Melbourne', -37.8, 144.96667, 4],
+              ['Fitzroy', -37.8045, 144.979, 5],
+              ['North Fitzroy', -37.78862, 144.97885, 3],
+              ['Clifton Hill', -37.79798, 144.99533, 2],
+              ['North Cote', -37.76667, 145, 1],
+              ['Brunswick', -37.76667, 144.96667, 1],
+              ['Coburg', -37.75, 144.96667, 1],
+              ['Preston', -37.75, 145.01667, 1],
+              ['Thornbury', -37.75, 145, 1],
+              ['University of Melbourne', -37.7963, 144.9614, 1]
+            ];
+
+            for (var i = 0; i < beaches.length; i++) {
+                var beach = beaches[i];
+                var marker = new google.maps.Marker({
+                  position: {lat: beach[1], lng: beach[2]},
+                  map: map,
+                  title: beach[0],
+                  zIndex: beach[3]
+                });
+              }
+
+
+            }</script>
+
+
+     
+         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdoxcz2Tl0MxFIEyf8AISEvd6fxXFcdWU&callback=initAutocomplete&region=Au"
+  type="text/javascript"></script>
+
+	
+	  <div id="map"  ></div>
+
+
+
+
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+
+
+
+<div id="container"></div>
+<div id="container1"></div>
+<div id="sliders">
+    <table>
+        <tr>
+        	<td>Alpha Angle</td>
+        	<td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+        </tr>
+        <tr>
+        	<td>Beta Angle</td>
+        	<td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+        </tr>
+        <tr>
+        	<td>Depth</td>
+        	<td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+        </tr>
+    </table>
+</div>
+
+<div id="container2"></div>
+<div id="container3"></div>
+
+<script>
+Highcharts.chart('container', {
+
+    title: {
+        text: 'Rent Variation, 2013-2017'
+    },
+
+    subtitle: {
+        text: 'Year Rent Index'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Price in AUD'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2013
+        }
+    },
+
+    series: [{
+        name: 'North Melbourne',
+        data: [288,	268.75 	,257.50 ,	248.75 ,	243.75 
+]
+    }, {
+        name: 'Fitzroy',
+        data: [230, 239, 225, 230, 215]
+    }, {
+        name: 'North-Fitzroy',
+        data: [300, 325, 300, 225, 280]
+    }, {
+        name: 'Clifton Hill',
+        data: [230 ,	220.00 	,223.75 	,220.00 ,	222.50 
+]
+    }, {
+        name: 'NorthCote',
+        data: [350, 	318.75 ,	307.50, 	300.00, 	298.75 
+]
+    },
+    {
+        name: 'Brunswick',
+        data: [260, 	280.00, 	275.00, 	265.00, 	258.75 
+]
+    },
+    {
+        name: 'Coburg',
+        data: [240, 	227.50, 	221.25, 	223.25, 	217.50 
+]
+    },
+    {
+        name: 'Preston',
+        data: [450 ,	412.50, 	395.00, 	382.50, 	363.75 
+]
+    },
+    {
+        name: 'Thornbury',
+        data: [290, 	283.75, 	287.00, 	279.00, 	278.75 
+]
+    },
+    {
+        name: 'Fairfield',
+        data: [240, 	247.50, 	237.75 ,	,230.00 ,	226.25 
+]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+
+
+</script>
+<script>
+
+//Set up the chart
+var chart = new Highcharts.Chart({
+ chart: {
+     renderTo: 'container1',
+     type: 'column',
+     options3d: {
+         enabled: true,
+         alpha: 15,
+         beta: 15,
+         depth: 50,
+         viewDistance: 25
+     }
+ },
+ 
+ title: {
+     text: 'Crime Rate'
+ },
+ subtitle: {
+     text: 'Incidents Reported'
+ },
+ xAxis: {
+     categories: ['2013', '2014', '2015', '2016', '2017'],
+     labels: {
+         skew3d: true,
+         style: {
+             fontSize: '16px'
+         }
+     }
+ },
+ plotOptions: {
+     column: {
+         depth: 25
+     }
+ },
+ 
+ series: 
+	 [{
+	        name: 'North Melbourne',
+	        data: [5419,	4766,	5466,	6017,	5444
+	 
+	]
+	    }, {
+	        name: 'Fitzroy',
+	        data: [12276,	10856,	11769,	11626,	10673
+	]
+	    }, {
+	        name: 'North-Fitzroy',
+	        data: [9773,	9542,	10417,	11400,	9992
+	]
+	    }, {
+	        name: 'Clifton Hill',
+	        data: [4722,	4588,	4638,	4241,	3981
+	 
+	]
+	    }, {
+	        name: 'NorthCote',
+	        data: [10670,	11080,	12740,	13473,	12141
+	 
+	]
+	    },
+	    {
+	        name: 'Brunswick',
+	        data: [5801,	5374,	6114,	6013,	5437
+	 
+	]
+	    },
+	    {
+	        name: 'Coburg',
+	        data: [16537,	15981,	18673,	21419,	20218
+
+	]
+	    },
+	    {
+	        name: 'Preston',
+	        data: [6450,	6518,	7638,	7542,	6459
+	 
+	]
+	    },
+	    {
+	        name: 'Thornbury',
+	        data: [5518,	5755,	6214,	6508,	5572
+	 
+	]
+	    },
+	    {
+	        name: 'Fairfield',
+	        data: [8765	,9324,	9964,	10198,	9490
+	 
+	]
+	    }]
+ 
+});
+
+function showValues() {
+ $('#alpha-value').html(chart.options.chart.options3d.alpha);
+ $('#beta-value').html(chart.options.chart.options3d.beta);
+ $('#depth-value').html(chart.options.chart.options3d.depth);
+}
+
+//Activate the sliders
+$('#sliders input').on('input change', function () {
+ chart.options.chart.options3d[this.id] = parseFloat(this.value);
+ showValues();
+ chart.redraw(false);
+});
+
+showValues();
+</script>
+<script type="text/javascript">
+Highcharts.chart('container2', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Food Accessibility'
+    },
+    xAxis: {
+        categories: ['North Melbourne', 'Fitzroy', 'North Fitzroy', 'Clifton Hill', 'NorthCote','Brunswick','Coborg','Preston','Thronbury','Fairfield']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total number of grocery stores'
+        }
+    },
+    legend: {
+        reversed: true
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+    series: [{
+        name: 'Coles',
+        data: [14, 13, 12, 10, 13,8,11,15,9,7]
+    }, {        name: 'Woolsworth',
+        data: [10, 10, 10, 9, 10,10,10,10,10,10]
+    }]
+});</script>
+<script>
+Highcharts.chart('container3', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Number of types of hospitals by Suburbs'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['North Melbourne', 'Fitzroy', 'North Fitzroy', 'Clifton Hill', 'NorthCote','Brunswick','Coborg','Preston','Thronbury','Fairfield'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        allowDecimals: false,
+        title: {
+            text: 'Number',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Public',
+        data: [0, 1, 0, 0, 0,0,0,0,0,0]
+    }, {
+        name: 'Private',
+        data: [1, 2, 0, 0, 0,1,2,1,0,1]
+    }]
+});</script>
+
+ 
+</body>
+</html>
